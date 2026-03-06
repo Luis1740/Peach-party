@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import { map } from "../game/map";
-import { player, box, movePlayer, resetPlayer } from "../game/player";
-import { drawMap, drawObjects } from "../game/draw";
+import { player, flotador, movePlayer, resetPlayer, goal } from "../game/player";
+import { drawMap, drawObjects } from "../game/draw.jsx";
 
 export default function Game() {
   const canvasRef = useRef(null);
@@ -14,7 +14,7 @@ export default function Game() {
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawMap(ctx, map, tileSize);
-      drawObjects(ctx, player, box, tileSize);
+      drawObjects(ctx, player, flotador, goal, tileSize);
       requestAnimationFrame(draw);
     }
 

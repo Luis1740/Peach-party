@@ -3,15 +3,20 @@ export const player = {
   x: 1,
   y: 1,
   moves: 0,
-  maxMoves: 50, // Límite de movimientos
+  maxMoves: 50,// Límite de movimientos
+  floats : 0,
 };
 
-export const box = {
+export const goal = {
+  x: 14,
+  y: 10
+};
+
+export const flotador = {
   x: 1,
   y: 10,
 };
-
-// Retorna true si hubo movimiento
+// retorna movimiento
 export function movePlayer(map, dx, dy) {
   if (player.moves >= player.maxMoves) return false;
 
@@ -24,39 +29,28 @@ export function movePlayer(map, dx, dy) {
   // Pared
   if (map[newY][newX] === 1) return false;
 
-  // Si hay caja
-  if (newX === box.x && newY === box.y) {
-    let boxNewX = box.x + dx;
-    let boxNewY = box.y + dy;
+  // Si toca el flotador
+  if (newX === flotador.x && newY === flotador.y) {
+    player.floats += 1;
 
-    if (
-      boxNewY >= 0 &&
-      boxNewY < map.length &&
-      boxNewX >= 0 &&
-      boxNewX < map[0].length &&
-      map[boxNewY][boxNewX] !== 1
-    ) {
-      box.x = boxNewX;
-      box.y = boxNewY;
-      player.x = newX;
-      player.y = newY;
-      player.moves++;
-      return true;
-    }
-    return false;
-  } else {
-    player.x = newX;
-    player.y = newY;
-    player.moves++;
-    return true;
+    // desaparecer flotador
+    flotador.x = -1;
+    flotador.y = -1;
   }
-}
 
-// Reiniciar nivel
+  player.x = newX;
+  player.y = newY;
+  player.moves++;
+
+  return true;
+}
+// reinicia lvl
 export function resetPlayer() {
   player.x = 1;
   player.y = 1;
   player.moves = 0;
-  box.x = 5;
-  box.y = 3;
+  player.floats = 0;
+
+  flotador.x = 1;
+  flotador.y = 10;
 }
