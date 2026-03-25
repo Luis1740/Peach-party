@@ -11,7 +11,7 @@ export default function Game() {
   const [, setTick] = useState(0);
 
   const level = levels[levelIndex];
-  const map = level.map;
+  const map = level.map;  
 
   useEffect(() => {
     loadLevel(level);

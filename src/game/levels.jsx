@@ -13,7 +13,7 @@ export const levels = [
     playerStart: { x: 1, y: 1 },
     goal: { x: 6, y: 6},
     flotador: { x: 3, y: 4 },
-    maxMoves: 10
+    maxMoves: 11
 },
 
 {
@@ -36,7 +36,7 @@ export const levels = [
   goal: { x: 9, y: 6 },
   flotador: { x: 10, y: 4 },
 
-  maxMoves: 22
+  maxMoves: 23
 },
 
   {
@@ -76,7 +76,7 @@ export const levels = [
     playerStart: { x: 10, y: 25 },
     goal: { x: 11, y: 1},
     flotador: { x: 11, y: 3 },
-    maxMoves: 18
+    maxMoves: 19
   }
 ];
 
